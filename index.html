@@ -6,15 +6,19 @@
     <title>landing page</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
   <body class="space-y-60">
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 w-full shadow-xl bg-white py-8 border-b">
+    <header class="sticky top-0 z-50 w-full shadow-xl bg-white py-6 border-b">
       <div class="flex items-center justify-between layout-container">
-        <a href=""
+        <a href="#home"
           ><img class="logo" src="./icons/logo-dark.svg" alt="dark-logo"
         /></a>
-        <nav class="navabr-links">
+        <nav class="navbar-links">
           <ul class="flex items-center gap-16">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">services</a></li>
@@ -28,7 +32,7 @@
     </header>
 
     <!-- hero section -->
-    <section class="layout-container !mt-20 space-y-10">
+    <section id="home" class="layout-container !mt-20 space-y-10">
       <!-- first row -->
       <div class="grid-hero-section">
         <div class="col-span-2 m-block">
@@ -48,7 +52,7 @@
       <!-- second row with company states -->
       <div class="grid-two-cols">
         <div class="flex flex-col justify-evenly items-start">
-          <button class="main-btn">Start Project</button>
+          <a href="#services" class="main-btn">Start Project</a>
           <!-- company stats -->
           <div class="company-states">
             <div>
@@ -76,7 +80,7 @@
           <img class="mx-auto" src="./imgs/hero-img-2.png" alt="hero-2" />
           <!-- down arrorw btn -->
           <a
-            href=""
+            href="#services"
             class="down-arrow-btn bg-Dark px-10 py-6 rounded-sm absolute right-0 bottom-0"
             aria-label="servises section"
           >
@@ -85,7 +89,6 @@
         </div>
       </div>
     </section>
-
     <!-- services section -->
     <section id="services" class="layout-container m-block">
       <h2 class="flex items-center section-title">
@@ -140,32 +143,30 @@
           unique style and aspirations, crafted with precision and brilliance
           for an unforgettable living experience
         </p>
-        <div class="accordion m-block">
+        <div class="accordion">
           <div class="accordion-item">
-            <button id="toggle-accordion-1">
-              <h1>toooooooooooooooooooooo</h1>
+            <button class="toggle-accordion">
+              <h1>Living Room Interior Design</h1>
               <span>+</span>
             </button>
             <div class="accordion-content">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
-                laborum vitae commodi voluptates nobis modi non dolor, eum
-                consequuntur. At esse voluptatum vel sapiente, aspernatur iure
-                itaque reprehenderit error soluta!
+                Transform your living room into a modern and stylish space with
+                our expert interior design solutions. We focus on functionality,
+                aesthetics, and comfort.
               </p>
             </div>
           </div>
           <div class="accordion-item">
-            <button id="toggle-accordion-2">
-              <h1>toooooooooooooooooooooo</h1>
+            <button class="toggle-accordion">
+              <h1>Commercial Office Room Interior Design</h1>
               <span>+</span>
             </button>
             <div class="accordion-content">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
-                laborum vitae commodi voluptates nobis modi non dolor, eum
-                consequuntur. At esse voluptatum vel sapiente, aspernatur iure
-                itaque reprehenderit error soluta!
+                Our commercial office design solutions ensure a productive and
+                professional environment, balancing ergonomics, lighting, and
+                modern aesthetics.
               </p>
             </div>
           </div>
@@ -240,7 +241,7 @@
     </section>
 
     <!-- reviews section -->
-    <section class="grid-two-cols relative layout-container">
+    <section id="reviews" class="grid-two-cols relative layout-container">
       <div>
         <img src="./imgs/swiper-section-img.png" alt="reviews img" />
       </div>
@@ -248,19 +249,72 @@
 
       <!-- swiper slides -->
       <div class="absolute bottom-0 right-0 w-[75%]">
-        <div class="swiper-wrapper">
-          <div class="review-card m-block">
-            <img src="./icons/quote.svg" alt="quote" />
-            <p>
-              Exceptional service! From the initial consultation to the final
-              reveal, your team demonstrated professionalism and a keen eye for
-              design. Highly recommend!
-            </p>
-            <div class="user">
-              <img src="./imgs/avatar1.png" alt="avatar" />
-              <div>
-                <h6>James Bennett</h6>
-                <p>Toronto, Canada</p>
+        <div class="swiper-container">
+          <div class="swiper rounded-xl">
+            <div class="swiper-wrapper">
+              <!-- slide1 -->
+              <div class="swiper-slide review-card m-block">
+                <img src="./icons/quote.svg" alt="quote" />
+                <p>
+                  Working with your design team was an absolute pleasure. The
+                  attention to detail and creativity exceeded my expectations.
+                  Thank you for making my home beautiful!
+                </p>
+                <div class="user">
+                  <img src="./imgs/avatar1.png" alt="avatar" />
+                  <div>
+                    <h6>Sophie Carter</h6>
+                    <p>New York, USA</p>
+                  </div>
+                </div>
+              </div>
+              <!-- slide2 -->
+              <div class="swiper-slide review-card m-block">
+                <img src="./icons/quote.svg" alt="quote" />
+                <p>
+                  Exceptional service! From the initial consultation to the
+                  final reveal, your team demonstrated professionalism and a
+                  keen eye for design. Highly recommend!
+                </p>
+                <div class="user">
+                  <img src="./imgs/avatar2.png" alt="avatar" />
+                  <div>
+                    <h6>James Bennett</h6>
+                    <p>Toronto, Canada</p>
+                  </div>
+                </div>
+              </div>
+              <!-- slide3 -->
+              <div class="swiper-slide review-card m-block">
+                <img src="./icons/quote.svg" alt="quote" />
+                <p>
+                  Working with your design team was an absolute pleasure. The
+                  attention to detail and creativity exceeded my expectations.
+                  Thank you for making my home beautiful!
+                </p>
+                <div class="user">
+                  <img src="./imgs/avatar1.png" alt="avatar" />
+                  <div>
+                    <h6>Sophie Carter</h6>
+                    <p>New York, USA</p>
+                  </div>
+                </div>
+              </div>
+              <!-- slide4 -->
+              <div class="swiper-slide review-card m-block">
+                <img src="./icons/quote.svg" alt="quote" />
+                <p>
+                  Exceptional service! From the initial consultation to the
+                  final reveal, your team demonstrated professionalism and a
+                  keen eye for design. Highly recommend!
+                </p>
+                <div class="user">
+                  <img src="./imgs/avatar2.png" alt="avatar" />
+                  <div>
+                    <h6>James Bennett</h6>
+                    <p>Toronto, Canada</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -327,11 +381,14 @@
         </div>
         <button class="main-btn" type="submit">Subscribe</button>
       </form>
+      <!-- popup -->
+      <div id="popup"></div>
     </section>
-
     <!-- Footer -->
     <footer>
-      <div class="layout-container grid grid-cols-4 gap-12 items-center">
+      <div
+        class="layout-container grid grid-cols-4 gap-12 items-center [&_ul]:space-y-4"
+      >
         <div class="m-block">
           <a href=""><img src="./icons/logo-light.svg" alt="logo" /></a>
           <p>
@@ -340,23 +397,35 @@
           </p>
           <ul class="social-media">
             <li>
-              <a href="" class="media-logo"
-                ><img src="./icons/facebook.svg" alt=""
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                class="media-logo"
+                ><img src="./icons/facebook.svg" alt="facebook"
               /></a>
             </li>
             <li>
-              <a href="" class="media-logo"
-                ><img src="./icons/twitter.svg" alt=""
+              <a
+                href="https://www.twitter.com"
+                target="_blank"
+                class="media-logo"
+                ><img src="./icons/twitter.svg" alt="twitter"
               /></a>
             </li>
             <li>
-              <a href="" class="media-logo"
-                ><img src="./icons/instagram.svg" alt=""
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                class="media-logo"
+                ><img src="./icons/instagram.svg" alt="instagram"
               /></a>
             </li>
             <li>
-              <a href="" class="media-logo"
-                ><img src="./icons/linkedin.svg" alt=""
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                class="media-logo"
+                ><img src="./icons/linkedin.svg" alt="linkedin"
               /></a>
             </li>
           </ul>
@@ -385,6 +454,8 @@
         </ul>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

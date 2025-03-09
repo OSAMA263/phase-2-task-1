@@ -12,8 +12,14 @@
   box-sizing: border-box;
   text-wrap: pretty;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   /* global styles */
+  section {
+    scroll-margin-top: 130px;
+  }
   h1,
   h2,
   h6 {
@@ -36,9 +42,30 @@ body {
     transition: all 0.3s;
     outline: none;
   }
-  .navabr-links {
+  .navbar-links {
     a {
-      @apply text-Gray text-lg font-semibold hover:text-Dark;
+      @apply text-Gray text-lg font-semibold hover:text-Dark relative;
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: black;
+        transition: all 0.3s;
+        right: 0;
+      }
+      &:hover::after {
+        width: 100%;
+        left: 0;
+      }
+      &.active {
+        @apply text-Dark;
+        &::after {
+          width: 100%;
+          left: 0;
+        }
+      }
     }
   }
   .logo {
@@ -49,6 +76,9 @@ body {
   }
   .m-block {
     @apply space-y-20;
+  }
+  #popup {
+    @apply fixed top-0 left-1/2 -translate-x-1/2 bg-Dark rounded-lg duration-500 p-4 w-fit mx-auto transition-all -translate-y-[200%] [&>h2]:!text-white z-10;
   }
   /* ------------------------------------------ */
   /* global classes */
@@ -62,24 +92,11 @@ body {
     @apply grid grid-cols-3 gap-12 [&>div:first-child]:space-y-20;
   }
   .main-btn {
-    @apply rounded-md cursor-pointer text-center bg-Dark text-white font-semibold sm:!text-base text-xs tracking-widest hover:bg-white hover:text-Dark transition-all duration-300 w-fit relative sm:px-10 sm:py-4 p-2 [&>#r-line]:hover:h-full [&>#b-line]:hover:w-full [&>#l-line]:hover:h-full [&>#t-line]:hover:w-full;
+    @apply rounded-md cursor-pointer text-center bg-Dark text-white font-semibold sm:!text-base text-xs tracking-widest hover:bg-white hover:text-Dark transition-all duration-300 w-fit relative overflow-hidden sm:px-10 sm:py-4 p-2 border border-transparent hover:border-Dark;
   }
-  /* lines make it with js */
-  /* absolute
-bg-[#333333]
-transition-all 
-duration-[1.2s]
-delay-200
-w-0
-h-0
-<Line className="w-[2px] bottom-0 right-0" id="r-line" />
-      <Line className="h-[2px] left-0 bottom-0" id="b-line" />
-      <Line className="w-[2px] top-0 left-0" id="l-line" />
-      <Line className="h-[2px] right-0 top-0" id="t-line" />
-*/
 }
 
-/* ------------------------------------------------------------------- */
+/* --------------------------------------put the classes into thier section id----------------------------- */
 /* hero section */
 .company-states {
   @apply flex gap-20 w-full items-center [&_div]:space-y-4 [&_h6]:!text-Gray text-center;
@@ -100,11 +117,17 @@ h-0
 .accordion-item {
   .accordion-content {
     @apply h-0 overflow-hidden transition-all duration-300;
+    &.active {
+      height: auto !important;
+    }
   }
   button {
     @apply border-b justify-between flex w-full font-semibold py-6 !text-xl shadow *:!text-Dark;
     span {
-      @apply transition-all duration-300 text-3xl;
+      @apply rotate-0 transition-all duration-300 text-3xl;
+    }
+    &.active span {
+      @apply rotate-45;
     }
   }
 }
@@ -127,7 +150,7 @@ h-0
 }
 
 /* swiper-section */
-.swiper-wrapper {
+.swiper-container {
   @apply relative rounded-tl-xl pl-6 pt-6 rounded-sm bg-white flex gap-16 justify-between;
   .review-card {
     @apply bg-Dark p-16 rounded-xl;
@@ -157,7 +180,7 @@ h-0
 footer {
   @apply py-32 bg-Dark !mt-0;
   .social-media {
-    @apply flex items-center gap-4;
+    @apply flex items-center gap-4 !space-y-0;
     .media-logo {
       @apply flex justify-center items-center rounded-sm bg-Gray hover:bg-stone-700 size-8 [&_img]:rounded-none;
     }
