@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* debug */
+/* * {
+  box-sizing: border-box;
+  background-color: rgb(0 100 0 / 0.05) !important;
+} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-wrap: pretty;
+}
+body {
+  /* global styles */
+  h1,
+  h2,
+  h6 {
+    @apply text-Dark;
+  }
+  img {
+    &[alt="curve"] {
+      @apply rounded-none;
+    }
+    @apply rounded-lg;
+  }
+  p {
+    @apply text-Gray text-[20px] leading-9;
+  }
+  input,
+  button,
+  svg,
+  textarea,
+  a {
+    transition: all 0.3s;
+    outline: none;
+  }
+  .navabr-links {
+    a {
+      @apply text-Gray text-lg font-semibold hover:text-Dark;
+    }
+  }
+  .logo {
+    width: 120px;
+  }
+  .section-title {
+    @apply font-bold text-pretty text-[50px];
+  }
+  .m-block {
+    @apply space-y-20;
+  }
+  /* ------------------------------------------ */
+  /* global classes */
+  .layout-container {
+    @apply mx-auto xl:w-[85%] lg:w-[90%] md:w-[95%] w-[95%];
+  }
+  .grid-two-cols {
+    @apply grid grid-cols-2 gap-12;
+  }
+  .grid-hero-section {
+    @apply grid grid-cols-3 gap-12 [&>div:first-child]:space-y-20;
+  }
+  .main-btn {
+    @apply rounded-md cursor-pointer text-center bg-Dark text-white font-semibold sm:!text-base text-xs tracking-widest hover:bg-white hover:text-Dark transition-all duration-300 w-fit relative sm:px-10 sm:py-4 p-2 [&>#r-line]:hover:h-full [&>#b-line]:hover:w-full [&>#l-line]:hover:h-full [&>#t-line]:hover:w-full;
+  }
+  /* lines make it with js */
+  /* absolute
+bg-[#333333]
+transition-all 
+duration-[1.2s]
+delay-200
+w-0
+h-0
+<Line className="w-[2px] bottom-0 right-0" id="r-line" />
+      <Line className="h-[2px] left-0 bottom-0" id="b-line" />
+      <Line className="w-[2px] top-0 left-0" id="l-line" />
+      <Line className="h-[2px] right-0 top-0" id="t-line" />
+*/
+}
+
+/* ------------------------------------------------------------------- */
+/* hero section */
+.company-states {
+  @apply flex gap-20 w-full items-center [&_div]:space-y-4 [&_h6]:!text-Gray text-center;
+  h1 {
+    @apply !text-Gray text-5xl;
+  }
+}
+
+/* services seciton */
+.service-card {
+  @apply flex gap-12 items-start [&_p]:text-base [&>div]:space-y-4 [&>img]:w-12 text-pretty;
+  h6 {
+    @apply font-semibold text-2xl;
+  }
+}
+
+/* accordion section */
+.accordion-item {
+  .accordion-content {
+    @apply h-0 overflow-hidden transition-all duration-300;
+  }
+  button {
+    @apply border-b justify-between flex w-full font-semibold py-6 !text-xl shadow *:!text-Dark;
+    span {
+      @apply transition-all duration-300 text-3xl;
+    }
+  }
+}
+
+/* how it works section */
+.step {
+  @apply flex gap-10 [&>div:first-child]:flex [&>div:first-child]:gap-y-4 [&>div]:flex-col [&>div]:items-center [&>div:last-child]:space-y-6;
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  p {
+    font-weight: 600;
+  }
+  .icon {
+    @apply rounded-full p-4 bg-Dark [&>img]:w-16;
+  }
+  .line {
+    @apply h-full bg-Gray w-[2px];
+  }
+}
+
+/* swiper-section */
+.swiper-wrapper {
+  @apply relative rounded-tl-xl pl-6 pt-6 rounded-sm bg-white flex gap-16 justify-between;
+  .review-card {
+    @apply bg-Dark p-16 rounded-xl;
+    p {
+      color: white !important;
+      font-weight: 600;
+    }
+    .user {
+      @apply flex gap-4 items-center [&>div]:space-y-2 [&_h6]:text-white [&_p]:!text-xs [&_p]:!text-Gray [&>img]:rounded-full;
+    }
+  }
+}
+.swiper-controls {
+  @apply absolute left-0 bottom-0 bg-white rounded-tr-lg;
+  button {
+    @apply bg-stone-100 rounded-sm p-4 hover:bg-stone-200;
+  }
+}
+
+/* contact section */
+
+.form-section {
+  @apply w-1/2 mx-auto -bottom-11 relative text-center bg-white rounded-md p-3;
+}
+
+/* footer */
+footer {
+  @apply py-32 bg-Dark !mt-0;
+  .social-media {
+    @apply flex items-center gap-4;
+    .media-logo {
+      @apply flex justify-center items-center rounded-sm bg-Gray hover:bg-stone-700 size-8 [&_img]:rounded-none;
+    }
+  }
+  ul li {
+    @apply [&_p]:!text-base;
+
+    h6 {
+      @apply text-white;
+    }
+    a {
+      @apply text-stone-400 hover:text-Gray;
+    }
+  }
+}
