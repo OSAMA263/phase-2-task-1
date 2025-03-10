@@ -15,8 +15,8 @@
 html {
   scroll-behavior: smooth;
 }
+/* global styles */
 body {
-  /* global styles */
   section {
     scroll-margin-top: 130px;
   }
@@ -32,7 +32,7 @@ body {
     @apply rounded-lg;
   }
   p {
-    @apply text-Gray text-[20px] leading-9;
+    @apply text-Gray lg:text-[20px] text-base leading-9;
   }
   input,
   button,
@@ -42,6 +42,10 @@ body {
     transition: all 0.3s;
     outline: none;
   }
+}
+
+/* ------------------------------------------------------------------- */
+header {
   .navbar-links {
     a {
       @apply text-Gray text-lg font-semibold hover:text-Dark relative;
@@ -68,48 +72,37 @@ body {
       }
     }
   }
+  #mobile-menu {
+    @apply bg-white overflow-hidden max-h-0;
+    &.active {
+      @apply max-h-[500px];
+    }
+    ul {
+      @apply flex flex-col items-center gap-4 py-4 shadow-xl  bg-white w-full left-0 -z-10;
+    }
+  }
   .logo {
     width: 120px;
   }
-  .section-title {
-    @apply font-bold text-pretty text-[50px];
-  }
-  .m-block {
-    @apply space-y-20;
-  }
-  #popup {
-    @apply fixed top-0 left-1/2 -translate-x-1/2 bg-Dark rounded-lg duration-500 p-4 w-fit mx-auto transition-all -translate-y-[200%] [&>h2]:!text-white z-10;
-  }
-  /* ------------------------------------------ */
-  /* global classes */
-  .layout-container {
-    @apply mx-auto xl:w-[85%] lg:w-[90%] md:w-[95%] w-[95%];
-  }
-  .grid-two-cols {
-    @apply grid grid-cols-2 gap-12;
-  }
-  .grid-hero-section {
-    @apply grid grid-cols-3 gap-12 [&>div:first-child]:space-y-20;
-  }
-  .main-btn {
-    @apply rounded-md cursor-pointer text-center bg-Dark text-white font-semibold sm:!text-base text-xs tracking-widest hover:bg-white hover:text-Dark transition-all duration-300 w-fit relative overflow-hidden sm:px-10 sm:py-4 p-2 border border-transparent hover:border-Dark;
-  }
 }
 
-/* --------------------------------------put the classes into thier section id----------------------------- */
 /* hero section */
-.company-states {
-  @apply flex gap-20 w-full items-center [&_div]:space-y-4 [&_h6]:!text-Gray text-center;
-  h1 {
-    @apply !text-Gray text-5xl;
+#home {
+  .company-states {
+    @apply flex gap-20 w-full items-center [&_div]:space-y-4 [&_h6]:!text-Gray text-center;
+    h1 {
+      @apply !text-Gray md:text-5xl text-3xl;
+    }
   }
 }
 
 /* services seciton */
-.service-card {
-  @apply flex gap-12 items-start [&_p]:text-base [&>div]:space-y-4 [&>img]:w-12 text-pretty;
-  h6 {
-    @apply font-semibold text-2xl;
+#services {
+  .service-card {
+    @apply flex gap-12 items-start [&_p]:text-base [&>div]:space-y-4 [&>img]:w-12 text-pretty;
+    h6 {
+      @apply font-semibold lg:text-2xl text-lg;
+    }
   }
 }
 
@@ -136,13 +129,13 @@ body {
 .step {
   @apply flex gap-10 [&>div:first-child]:flex [&>div:first-child]:gap-y-4 [&>div]:flex-col [&>div]:items-center [&>div:last-child]:space-y-6;
   h1 {
-    @apply text-3xl font-bold;
+    @apply md:text-3xl text-2xl font-bold;
   }
   p {
     font-weight: 600;
   }
   .icon {
-    @apply rounded-full p-4 bg-Dark [&>img]:w-16;
+    @apply rounded-full p-4 bg-Dark [&>img]:min-w-6;
   }
   .line {
     @apply h-full bg-Gray w-[2px];
@@ -150,35 +143,41 @@ body {
 }
 
 /* swiper-section */
-.swiper-container {
-  @apply relative rounded-tl-xl pl-6 pt-6 rounded-sm bg-white flex gap-16 justify-between;
-  .review-card {
-    @apply bg-Dark p-16 rounded-xl;
-    p {
-      color: white !important;
-      font-weight: 600;
-    }
-    .user {
-      @apply flex gap-4 items-center [&>div]:space-y-2 [&_h6]:text-white [&_p]:!text-xs [&_p]:!text-Gray [&>img]:rounded-full;
+#reviews {
+  .swiper-container {
+    @apply relative rounded-tl-xl pl-6 pt-6 rounded-sm max-xl:!p-0 2xl:bg-white;
+    .review-card {
+      @apply bg-Dark p-16 rounded-xl space-y-10;
+      p {
+        color: white !important;
+        font-weight: 600;
+      }
+      .user {
+        @apply flex gap-4 items-center [&>div]:space-y-2 [&_h6]:text-white [&_p]:!text-xs [&_p]:!text-Gray [&>img]:rounded-full;
+      }
     }
   }
-}
-.swiper-controls {
-  @apply absolute left-0 bottom-0 bg-white rounded-tr-lg;
-  button {
-    @apply bg-stone-100 rounded-sm p-4 hover:bg-stone-200;
+  .swiper-controls {
+    @apply absolute left-0 bottom-0 max-xl:-bottom-20 bg-white rounded-tr-lg;
+    button {
+      @apply bg-stone-100 rounded-sm p-4 hover:bg-stone-200;
+    }
   }
 }
 
 /* contact section */
-
-.form-section {
-  @apply w-1/2 mx-auto -bottom-11 relative text-center bg-white rounded-md p-3;
+#contact {
+  &.form-section {
+    @apply xl:w-1/2 w-[80%] mx-auto -bottom-11 relative text-center bg-white rounded-md p-3;
+  }
+  #popup {
+    @apply fixed top-0 left-1/2 -translate-x-1/2 bg-Dark rounded-lg duration-500 p-4 w-fit mx-auto transition-all -translate-y-[200%] [&>h2]:!text-white z-10;
+  }
 }
 
 /* footer */
 footer {
-  @apply py-32 bg-Dark !mt-0;
+  @apply py-32 max-sm:!pb-10 bg-Dark !mt-0;
   .social-media {
     @apply flex items-center gap-4 !space-y-0;
     .media-logo {

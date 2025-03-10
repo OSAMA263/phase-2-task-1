@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section[id]");
   const accordionToggler = document.querySelectorAll(".toggle-accordion");
   const form = document.querySelector("#subscribe-form");
+  const menuBtn = document.querySelector("#menu-btn");
 
   // active navlink onclick
   navLinks.forEach((link) => {
@@ -51,8 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // swiper slides review
   new Swiper(".swiper", {
     loop: true,
-    slidesPerView: 2,
+    slidesPerView: 1,
     spaceBetween: 40,
+    breakpoints: {
+      1630: {
+        slidesPerView: 2,
+      },
+    },
     navigation: {
       nextEl: "#next-slide",
       prevEl: "#prev-slide",
@@ -75,6 +81,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
 
     form.reset();
+  });
+
+  // navlinks menu toggle handler on small screens
+  menuBtn.addEventListener("click", () => {
+    const mobileNavMenu = document.querySelector("#mobile-menu");
+    mobileNavMenu.classList.toggle("active");
+
+    if (mobileNavMenu.classList.contains("active")) {
+      mobileNavMenu.style.height = mobileNavMenu.scrollHeight +"px";
+    } else {
+      mobileNavMenu.style.height = 0;
+    }
   });
 
   window.addEventListener("scroll", spyActiveLink);
